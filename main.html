@@ -81,6 +81,24 @@
         background-color: #d51c7a;
     }
 
+    #btnPlayAgain {
+        width: 50%;
+        height: 8%;
+        margin-top: 20%;
+        border: solid #ffffff 6px;
+        border-radius: 20px;
+        font-family: Verdana,sans-serif;
+        font-weight: bold;
+        font-size: 25px;
+        color: white;
+        background-color: #ff4ba8;
+    }
+
+    #btnPlayAgain:active {
+        color: white;
+        background-color: #d51c7a;
+    }
+
 
 
 </style>
@@ -150,7 +168,8 @@
         const remainingStrings = totalStrings - usedStrings.length;
 
         if (remainingStrings === 0) {
-            stringsDiv.innerHTML = "Ingen flere strenger igjen!";
+            const ferdig = "Du har spilt gjennom alle rundene!"
+            stringsDiv.innerHTML = `<p>${ferdig}</p>`;
             document.getElementById("btnNeste").style.display = "none";
             document.getElementById("btnPlayAgain").style.display = "block";
             return;
