@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vors spillside</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style>
+
+    body {
+        background-color: #ff96ca;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        font-family: "Baloo Bhaina",sans-serif;
+        font-size: 60px;
+        font-weight: 50;
+        color: white;
+        -webkit-text-stroke-width: 4px;
+        -webkit-text-stroke-color: #ff4ba8;
+
+    }
+
+    #btnNeste {
+        width: 50%;
+        height: 8%;
+        margin-top: 20%;
+        border: solid #ffffff 6px;
+        border-radius: 20px;
+        font-family: "Baloo Bhaina",sans-serif;
+        font-size: 25px;
+        color: white;
+        background-color: #ff4ba8;
+    }
+
+    #btnNeste:active {
+        border-color: #ff4ba8;
+        color: white;
+        background-color: #9f1a61;
+    }
+
+    #strings {
+        width: 70%;
+        height: 50%;
+        background-color: aliceblue;
+    }
+
+</style>
+
+<body>
+
+<h1>VORS</h1>
+<span id="progress"></span>
+<div id="strings"></div>
+<button id="btnNeste">Neste</button>
+<button id="btnPlayAgain" style="display:none">Spill igjen</button>
+
+</body>
+
+<script>
+
+    const strings = [
+        "SINGLE: La gruppen ta over tinderen din eller drikk tre slurker",
+        "SINGLE: Ta en shot",
+        "SINGLE: Ta en bodyshot av personen til venstre",
+        "SINGLE: Nødt eller sannhet? Gruppa velger sannhet/nødt",
+        "SINGLE: Sitt på fanget til personen til venstre for deg de neste 10 minuttene",
+        "SINGLE: Velg en person som skal chugge drikken",
+        "SINGLE: Fortell om et ons du har hatt som du angrer på eller drikk tre slurker",
+        "SINGLE: Demonstrer din favorittstilling med personen til høyre for deg eller drikk fem slurker ",
+        "SINGLE: Si hvem i gruppen som er den største playeren eller drikk to slurker ",
+        "SINGLE: La personen til høyre for deg skrive noe på et valgfritt sted på kroppen din eller ta to shots",
+        "SINGLE: Demonstrer for gruppen sexy krabbing eller ta en shot",
+        "SINGLE: Drikk bodycounten din",
+        "SINGLE: La personen til din venstre spanke deg eller ta en shot",
+        "SINGLE: Gi et kyss til alle i gruppen eller ta en shot",
+        "SINGLE: Hvilke to personer i rommet kunne du hatt trekant med? Trioen tar tre slurker hver",
+        "SINGLE: Fortell en klein sexhistorie eller drikk fire slurker",
+        "SINGLE: Fortell alderen til den eldste du har ligget med eller drikk tre slurker ",
+        "SINGLE: La personen til venstre for deg gi deg et sugemerke eller ta to shots",
+        "SINGLE: Velg en person i rommet som må snurre ti ganger rundt seg selv og så drikke fem slurker uten å søle",
+        "SINGLE: Drikk tre slurker",
+        "SINGLE: Ta 10 pushups eller drikk fem slurker",
+        "SINGLE: Søk på sex i meldinger og les høyt det første som kommer opp eller ta fem slurker ",
+        "SINGLE: Ta håndbak med en valgfri person i rommet, taperen tar en shot",
+        "PEKELEK: Most likely til å gå tilbake til exen",
+        "JEG HAR ALDRI: ligget med en jeg ikke visste navnet på",
+        "JEG HAR ALDRI: trodd jeg var gravid",
+        "JEG HAR ALDRI: kjørt brannbil (en ridder er ikke en ridder uten litt blod på sverdet)",
+        "JEG HAR ALDRI: kjøpt eller tatt plan B",
+        "JEG HAR ALDRI: kun vært med noen for sexen",
+        "JEG HAR ALDRI: tenkt på noen andre under sex",
+        "JEG HAR ALDRI: hatt en kjønnssykdom",
+        "WILDCARD: Hoes before bros - alle single ladies tar en slurk",
+        "WILDCARD: Bros before hoes - gutta drikker",
+        "WILDCARD: Drikk hvis du bruker fake tan",
+        "WILDCARD: Siste personen som hadde sex - fullfør drikken",
+        "WILDCARD: Den yngste og eldste personen i rommet er drinking buddies",
+        "WILDCARD: Den høyeste gutten i rommet gjetter fargen på BH-en til alle jentene",
+        "WILDCARD: alle legger mobilen sin på bordet, den første som får varsling må ta en shot",
+
+    ]
+
+    let usedStrings = []; // to keep track of used strings
+    let remainingStrings = strings.slice(); // make a copy of strings to remove used strings
+
+    const displayRandomString = () => {
+        const stringsDiv = document.getElementById("strings");
+        const progressSpan = document.getElementById("progress");
+
+        if (remainingStrings.length === 0) {
+            stringsDiv.innerHTML = "Ingen flere strenger igjen!";
+            document.getElementById("btnNeste").style.display = "none";
+            document.getElementById("btnPlayAgain").style.display = "block";
+            return;
+        }
+
+        const randomIndex = Math.floor(Math.random() * remainingStrings.length);
+        const randomString = remainingStrings[randomIndex];
+        usedStrings.push(randomString);
+        remainingStrings.splice(randomIndex, 1);
+
+        stringsDiv.innerHTML = randomString;
+        progressSpan.innerHTML = `Strenger igjen: ${remainingStrings.length}`;
+    };
+
+    const btnNeste = document.getElementById("btnNeste");
+    btnNeste.addEventListener("click", displayRandomString);
+
+    const btnPlayAgain = document.getElementById("btnPlayAgain");
+    btnPlayAgain.addEventListener("click", () => {
+        usedStrings = [];
+        remainingStrings = strings.slice();
+        btnNeste.style.display = "block";
+        btnPlayAgain.style.display = "none";
+        displayRandomString();
+    });
+
+    displayRandomString(); // show first string on page load
+
+</script>
+</html>
