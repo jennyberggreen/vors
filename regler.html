@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vors regler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style>
+    body {
+        background-color: #ff7fbf;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        font-family: "Baloo Bhaina",sans-serif;
+        font-size: 60px;
+        font-weight: 50;
+        color: white;
+        text-shadow: 2px 2px 8px #ff4ba8;
+
+    }
+
+    #text {
+        width: 90%;
+        height: 70%;
+        font-family: "Baloo Bhaina", sans-serif;
+    }
+
+    h3 {
+        font-size: 25px;
+        text-align: center;
+        color: #d53084;
+        letter-spacing: 3px;
+        text-shadow: 2px 2px 8px #ffffff;
+    }
+
+    p {
+        font-size: 25px;
+        line-height: 1.5;
+        text-align: center;
+        color: white;
+    }
+
+</style>
+
+
+<body>
+
+<h1>VORS</h1>
+<div id="text">
+    <h3>Hvordan spille vors</h3>
+    <p id="tekst"></p>
+</div>
+
+</body>
+
+<script>
+    let regelTekst = "La en valgfri person i rommet starte med snusboksen og " +
+        "trykk Start. For hver utfordring merket med SNUSBOKS skal personen " +
+        "med snusboksen gjøre det som står. Deretter sendes snusboksen til " +
+        "neste person i gruppen. Står det derimot noe annet enn SNUSBOKS betyr " +
+        "det at dette er en utfordring som gjelder alle i rommet. ";
+
+    let tekst = document.getElementById("tekst");
+
+    tekst.innerHTML = regelTekst;
+</script>
+
+
+</html>
